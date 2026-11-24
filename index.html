@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guías de viaje</title>
+<meta name="description" content="Elige destino.">
+<meta name="theme-color" content="#f8f6f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14171c" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icono.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icono-180.png">
+<style>
+:root{color-scheme:light dark;--fondo:light-dark(#f8f6f1,#14171c);--tinta:light-dark(#22262c,#ece8e0);--suave:light-dark(#68645d,#a8a49b)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:17px/1.5 -apple-system,"Segoe UI",system-ui,sans-serif}
+main{max-width:1080px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 16px 48px}
+h1{font:normal clamp(32px,6vw,46px)/1.1 Georgia,serif;margin:0 0 6px}
+p{color:var(--suave);margin:0 0 24px}
+ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));gap:18px}
+a{display:block;border-radius:16px;overflow:hidden;background:#222;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+a:focus-visible{outline:3px solid #b3122e;outline-offset:3px}
+img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover}
+@media(prefers-reduced-motion:no-preference){a{transition:transform .15s}a:hover{transform:translateY(-3px)}}
+</style>
+</head>
+<body>
+<main>
+<h1>Guías de viaje</h1>
+<p>Elige destino. Dentro de cada guía puedes guardarla para verla sin conexión.</p>
+<!-- Guía nueva: su carpeta, su portada en portadas/ y una línea aquí y en sw.js -->
+<ul>
+<li><a href="copenhague/"><img src="portadas/copenhague.jpg" width="1000" height="525" alt="Copenhague en Navidad, del 4 al 8 de diciembre"></a></li>
+<li><a href="tailandia/"><img src="portadas/tailandia.jpg" width="1000" height="525" alt="Tailandia 2026, del 30 de octubre al 20 de noviembre"></a></li>
+<li><a href="lyon/"><img src="portadas/lyon.jpg" width="1000" height="525" alt="Lyon, dos días y medio, del 9 al 11 de octubre"></a></li>
+<li><a href="nerja/"><img src="portadas/nerja.jpg" width="1000" height="525" alt="Una semana en Nerja, del 7 al 13 de septiembre"></a></li>
+<li><a href="londres/"><img src="portadas/londres.jpg" width="1000" height="525" alt="Londres, a vuestro aire, desde el 29 de agosto"></a></li>
+<li><a href="vietnam/"><img src="portadas/vietnam.jpg" width="1000" height="525" alt="Vietnam 2026, del 29 de agosto al 12 de septiembre"></a></li>
+</ul>
+</main>
+<script>
+if (location.pathname.endsWith('/')) history.replaceState(null, '', 'index.html' + location.search + location.hash);
+// El alcance es SOLO index.html: si cubriera las carpetas, las guías creerían que hay una versión nueva en la primera visita.
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js', {scope: './index.html', updateViaCache: 'none'}).catch(function(){});
+</script>
+</body>
+</html>
